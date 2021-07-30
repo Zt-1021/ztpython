@@ -1,0 +1,6 @@
+1.测试集加载单个用例：testMathMethod.py；testMathMethodSuite.py
+2.测试集加载多个数据用例：testMathMethod_new1.py（修改了）；testMathMethodSuite_new1.py
+3.使用excel读写数据：testMathMethod_new1.py；testMathMethodSuite_excel.py；testDataExcel.py；
+注：为了让html显示print数据，修改了HTMLTestRunner源文件，isinstance
+
+4.学习ddt  替换超继承：testMathMethod_ddt.py

@@ -1,0 +1,8 @@
+test_positive_negative (study.testMathMethod.TestMathMethodAdd) ... ok
+test_two_negative (study.testMathMethod.TestMathMethodAdd) ... ok
+test_two_zero (study.testMathMethod.TestMathMethodAdd) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK
