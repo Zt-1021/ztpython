@@ -4,13 +4,19 @@ from common import constant
 
 
 class Request:
-    def __init__(self, envior):
+    def __init__(self):
         self.session = requests.sessions.session()
-        envior01 = envior.upper()
-        if envior01 == "TEST":
-            self.baseurl = Conf(constant.conffile_dir).getvalue("Http", "testurl")
-        elif envior01 == "PROD":
-            self.baseurl = Conf(constant.conffile_dir).getvalue("Http", "produrl")
+        # envior01 = envior.upper()
+        # if envior01 == "TEST":
+        #     self.baseurl = Conf(constant.conffile_dir).getvalue("Http", "testurl")
+        # elif envior01 == "PROD":
+        #     self.baseurl = Conf(constant.conffile_dir).getvalue("Http", "produrl")
+
+        value = Conf(constant.global_dir).getboolean("global", "switch")
+        if value:
+            self.baseurl = Conf(constant.testconf_dir).get("Api", "url")
+        else:
+            self.baseurl = Conf(constant.prodconf_dir).get("Api", "url")
 
     def request(self, method, url, data=None):
         method01 = method.upper()
@@ -27,7 +33,7 @@ class Request:
 
 
 if __name__ == "__main__":
-    request = Request("test")
+    request = Request()
     # data = {"pageNum": 0}
     # data02 = {"username":"zhangteng@fuyoubank.com","password":"da_123","imageCode":"0"}
     # response = request.request('get', '/code/getEInfoList', data)

@@ -16,10 +16,10 @@ class MessageTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.request = request.Request("test")
+        cls.request = request.Request()
         cls.request.request("get", "/code/image")
-        username = conf_class.Conf(constant.conffile_dir).getvalue("User", "admin_user_name")
-        password = conf_class.Conf(constant.conffile_dir).getvalue("User", "admin_user_password")
+        username = conf_class.Conf(constant.testconf_dir).get("User", "admin_user_name")
+        password = conf_class.Conf(constant.testconf_dir).get("User", "admin_user_password")
         cls.request.request("post", "/authentication/form",
                              {"username": username, "password": password, "imageCode": "0"})
         cls.request.request("get", "/code/judgingIdentity", {"email": username})

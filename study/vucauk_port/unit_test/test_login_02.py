@@ -12,7 +12,7 @@ class Testlogin(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.request = request.Request("test")
+        cls.request = request.Request()
 
     def setUp(self):
         pass
