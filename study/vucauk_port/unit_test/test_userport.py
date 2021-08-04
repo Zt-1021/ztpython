@@ -24,7 +24,7 @@ cases10 = DoExcel(common.constant.case_dir_user, "getuserinfo").read_test_data()
 @ddt
 class Testuserport(unittest.TestCase):
     def setUp(self):
-        self.baseurl = Conf("../configer/conf.conf").getvalue("Http", "testurl")
+        self.baseurl = Conf("../configer/test.conf").get("Api", "url")
         self.session = requests.session()
         self.loginAccount = loginaccount(self.baseurl, self.session)
         self.loginAccount.login_user("zt_1021@163.com", "zt123456")

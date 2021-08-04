@@ -7,14 +7,14 @@ class TestHomePage(unittest.TestCase):
     def setUp(self):
         # print("-----start-----")
         self.domain_name = Conf("D:\ztpython\study\mogugu\configer\conf.conf").getvalue("DomainName", "test")
-        # self.host = Conf("D:\ztpython\study\mogugu\configer\conf.conf").getvalue(
-        #                                                                         "MysqlDatabase", "test_database_host")
-        # self.port = Conf("D:\ztpython\study\mogugu\configer\conf.conf").getvalue(
-        #                                                                         "MysqlDatabase", "test_database_port")
-        # self.username = Conf("D:\ztpython\study\mogugu\configer\conf.conf").getvalue(
-        #                                                                     "MysqlDatabase", "test_database_username")
-        # self.password = Conf("D:\ztpython\study\mogugu\configer\conf.conf").getvalue(
-        #                                                                     "MysqlDatabase", "test_database_password")
+        # self.host = Conf("D:\ztpython\study\mogugu\configer\test.conf").getvalue(
+        #                                                                         "MysqlDatabase", "host")
+        # self.port = Conf("D:\ztpython\study\mogugu\configer\test.conf").getvalue(
+        #                                                                         "MysqlDatabase", "port")
+        # self.username = Conf("D:\ztpython\study\mogugu\configer\test.conf").getvalue(
+        #                                                                     "MysqlDatabase", "username")
+        # self.password = Conf("D:\ztpython\study\mogugu\configer\test.conf").getvalue(
+        #                                                                     "MysqlDatabase", "password")
 
     def tearDown(self):
         pass

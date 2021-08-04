@@ -16,4 +16,4 @@ class Conf:
 
 
 if __name__ == '__main__':
-    print(Conf("conf.conf").getvalue("DomainName", "test"))
+    print(Conf("test.conf").getvalue("Api", "url"))

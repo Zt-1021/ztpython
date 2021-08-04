@@ -17,7 +17,7 @@ data01 = []
 @ddt
 class MessageTest(unittest.TestCase):
     def setUp(self):
-        self.baseurl = Conf("../configer/conf.conf").getvalue("Http", "testurl")
+        self.baseurl = Conf("../configer/test.conf").get("Api", "url")
         self.session = requests.session()
         self.loginAccount = loginaccount(self.baseurl, self.session)
         self.loginAccount.login_user("vuca@vucacapital.com", "000000")

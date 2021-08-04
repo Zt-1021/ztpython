@@ -18,7 +18,7 @@ data01 = []
 @ddt
 class Testsystemworkinfo(unittest.TestCase):
     def setUp(self):
-        self.baseurl = Conf("../configer/conf.conf").getvalue("Http", "testurl")
+        self.baseurl = Conf("../configer/test.conf").get("Api", "url")
         self.session = requests.session()
         # self.loginAccount = loginaccount(self.baseurl, self.session)
         # self.loginAccount.login_user("admin@163.com", "000000")

@@ -6,7 +6,7 @@ import os
 # print(value)
 
 # proDir = os.path.split(os.path.realpath(__file__))[0]
-# configPath = os.path.join(proDir, "conf.conf")
+# configPath = os.path.join(proDir, "test.conf")
 # import common.constant
 
 
@@ -23,5 +23,5 @@ class Conf:
 
 
 if __name__ == '__main__':
-    print(Conf("conf.conf").getvalue("Http", "testurl"))
+    print(Conf("test.conf").get("Api", "url"))
     # print(Conf(common.constant.conffile_dir).getvalue("User", "admin_user_name"))

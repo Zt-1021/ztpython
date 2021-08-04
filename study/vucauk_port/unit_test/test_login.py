@@ -13,7 +13,7 @@ cases = DoExcel(common.constant.case_dir_admin, "login").read_test_data()
 @ddt
 class Testlogin(unittest.TestCase):
     def setUp(self):
-        self.baseurl = Conf("../configer/conf.conf").getvalue("Http", "testurl")
+        self.baseurl = Conf("../configer/test.conf").get("Api", "url")
         self.session = requests.session()
 
     def tearDown(self):

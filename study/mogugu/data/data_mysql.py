@@ -3,10 +3,10 @@ import pymysql
 
 
 # # 获取配置文件中数据库的相关信息
-# host = Conf("D:\ztpython\study\mogugu\configer\conf.conf").getvalue("MysqlDatabase", "test_database_host")
-# port = Conf("D:\ztpython\study\mogugu\configer\conf.conf").getvalue("MysqlDatabase", "test_database_port")
-# username = Conf("D:\ztpython\study\mogugu\configer\conf.conf").getvalue("MysqlDatabase", "test_database_username")
-# password = Conf("D:\ztpython\study\mogugu\configer\conf.conf").getvalue("MysqlDatabase", "test_database_password")
+# host = Conf("D:\ztpython\study\mogugu\configer\test.conf").getvalue("MysqlDatabase", "host")
+# port = Conf("D:\ztpython\study\mogugu\configer\test.conf").getvalue("MysqlDatabase", "port")
+# username = Conf("D:\ztpython\study\mogugu\configer\test.conf").getvalue("MysqlDatabase", "username")
+# password = Conf("D:\ztpython\study\mogugu\configer\test.conf").getvalue("MysqlDatabase", "password")
 #
 # #连接数据库
 # db = pymysql.connect(host, port, username, password,)
