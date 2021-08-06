@@ -6,7 +6,7 @@ from ddt import ddt, data
 from common.excel_class_02 import DoExcel
 
 
-cases01 = DoExcel(constant.case_dir_admin, "saveEnterpriseInfo").read_test_data()
+cases01 = DoExcel(constant.case_dir_admin, "companybasicinfo").read_test_data()
 cases02 = DoExcel(constant.case_dir_admin, "addcompanydetailinfo").read_test_data()
 cases03 = DoExcel(constant.case_dir_admin, "updatecompanydetailinfo").read_test_data()
 cases04 = DoExcel(constant.case_dir_admin, "searchenterprise").read_test_data()
@@ -47,10 +47,10 @@ class Testcompanyexit(unittest.TestCase):
         try:
             self.assertIn(case['excepted'], response.json()['message'])
         except AssertionError as e:
-            DoExcel(constant.case_dir_admin, "saveEnterpriseInfo").write_test_data(case["id"], response.text, "Failed")
+            DoExcel(constant.case_dir_admin, "companybasicinfo").write_test_data(case["id"], response.text, "Failed")
             print(e)
         else:
-            DoExcel(constant.case_dir_admin, "saveEnterpriseInfo").write_test_data(case["id"], response.text, "Pass")
+            DoExcel(constant.case_dir_admin, "companybasicinfo").write_test_data(case["id"], response.text, "Pass")
 
     @data(*cases02)
     def test_case02_savecompanydetailinfo(self, case):  # 添加公司---保存公司详细信息
@@ -195,20 +195,21 @@ class Testcompanyexit(unittest.TestCase):
 
         if "Information Acquisition Success." in response.text:
             datas14.append(response.json())
-
+    #
     @data(*cases13)
     def test_case15_getDistributingUserInfo(self, case):
         cmresult = datas14[0]["results"]
         data = json.loads(case['data'])
-        data['sharenumber'] = cmresult["undistributedShares"]
+        if data['sharesNumber'] == "{$shareNumber}":
+            data['sharesNumber'] = cmresult["undistributedShares"]
         response = self.request.request(case['method'], case['url'], data)
         try:
             self.assertIn(case['excepted'], response.json()['message'])
         except AssertionError as e:
-            DoExcel(constant.case_dir_admin, "EnterpriseAllotmentShares").write_test_data(case["id"], response.text, "Failed")
+            DoExcel(constant.case_dir_admin, "DistributingUserInfo").write_test_data(case["id"], response.text, "Failed")
             print(e)
         else:
-            DoExcel(constant.case_dir_admin, "EnterpriseAllotmentShares").write_test_data(case["id"], response.text, "Pass")
+            DoExcel(constant.case_dir_admin, "DistributingUserInfo").write_test_data(case["id"], response.text, "Pass")
 
     @data(*cases14)
     def test_case16_postsaveTargetedCapitalIncrease(self, case):

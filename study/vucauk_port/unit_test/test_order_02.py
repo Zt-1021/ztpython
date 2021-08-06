@@ -31,7 +31,6 @@ class TestOrder(unittest.TestCase):
     def setUp(self):
         pass
 
-
     @data(*cases01)
     def test_case01_getorderinfo(self, case):
         response = self.request.request(case['method'], case['url'], json.loads(case['data']))
