@@ -1,6 +1,6 @@
 import unittest
 import json
-from common import constant, request
+from common import constant, request,mysql
 from configer import conf_class
 from ddt import ddt, data
 from common.excel_class_02 import DoExcel
@@ -9,7 +9,7 @@ from common.excel_class_02 import DoExcel
 cases01 = DoExcel(constant.case_dir_admin, "addworkorder").read_test_data()
 cases02 = DoExcel(constant.case_dir_admin, "getworkorders").read_test_data()
 cases03 = DoExcel(constant.case_dir_admin, "getworkorder").read_test_data()
-
+datas01 = {}
 
 @ddt
 class Testsystemworkinfo(unittest.TestCase):
@@ -17,6 +17,14 @@ class Testsystemworkinfo(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.request = request.Request()
+
+        cls.host = conf_class.Conf(constant.testconf_dir).get("MysqlDatabase", "host")
+        cls.username = conf_class.Conf(constant.testconf_dir).get("MysqlDatabase", "username")
+        cls.password = conf_class.Conf(constant.testconf_dir).get("MysqlDatabase", "password")
+        cls.database = conf_class.Conf(constant.testconf_dir).get("MysqlDatabase", "database")
+        cls.port = conf_class.Conf(constant.testconf_dir).get("MysqlDatabase", "port")
+        cls.mysql = mysql.Mysql(cls.host, cls.username, cls.password, cls.database, int(cls.port))
+
         cls.request.request("get", "/code/image")
         username = conf_class.Conf(constant.testconf_dir).get("User", "admin_user_name")
         password = conf_class.Conf(constant.testconf_dir).get("User", "admin_user_password")
@@ -37,6 +45,9 @@ class Testsystemworkinfo(unittest.TestCase):
             print(e)
         else:
             DoExcel(constant.case_dir_admin, "addworkorder").write_test_data(case["id"], response.text, "Pass")
+
+        if "Add successful！" in response.text:
+            datas01['result'] = response.json()["results"]
 
     @data(*cases02)
     def test_case02_getuserworkorders(self, case):
@@ -65,5 +76,8 @@ class Testsystemworkinfo(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        userWorkOrderId = datas01["result"]["userWorkOrderId"]
+        cls.mysql.modifydata("delete from t_enterprise_info where id = " + str(userWorkOrderId))
+        cls.mysql.close()
         cls.request.session.close()
 
