@@ -7,14 +7,14 @@ from common.excel_class_02 import DoExcel
 
 
 cases01 = DoExcel(constant.case_dir_user, "getOrderDetailsDto").read_test_data()
-cases02 = DoExcel(constant.case_dir_user, "saveAccountBalanceInfo").read_test_data()
+# cases02 = DoExcel(constant.case_dir_user, "saveAccountBalanceInfo").read_test_data()
 cases03 = DoExcel(constant.case_dir_user, "getEnterpriseData").read_test_data()
 cases04 = DoExcel(constant.case_dir_user, "saveUserEnterpriseReleation").read_test_data()
 cases05 = DoExcel(constant.case_dir_user, "getShareCertificateInfos").read_test_data()
 cases06 = DoExcel(constant.case_dir_user, "downloadShareCertificate").read_test_data()
-cases07 = DoExcel(constant.case_dir_user, "saveUserTransactionOrder").read_test_data()
+# cases07 = DoExcel(constant.case_dir_user, "saveUserTransactionOrder").read_test_data()
 cases08 = DoExcel(constant.case_dir_user, "getUserOrderInfoDTO").read_test_data()
-cases09 = DoExcel(constant.case_dir_user, "updateUserOrderState").read_test_data()
+# cases09 = DoExcel(constant.case_dir_user, "updateUserOrderState").read_test_data()
 cases10 = DoExcel(constant.case_dir_user, "getuserinfo").read_test_data()
 
 
@@ -55,16 +55,16 @@ class Testuserport(unittest.TestCase):
             DoExcel(constant.case_dir_user, "getOrderDetailsDto").write_test_data(case["id"], response.text,
                                                                                         "Pass")
 
-    @data(*cases02)
-    def test_case04_saveaccountbalanceinfo(self, case):
-        response = self.request.request(case['method'], case['url'], json.loads(case['data']))
-        try:
-            self.assertIn(case['excepted'], response.json()['message'])
-        except AssertionError as e:
-            DoExcel(constant.case_dir_user, "saveAccountBalanceInfo").write_test_data(case["id"], response.text, "Failed")
-            print(e)
-        else:
-            DoExcel(constant.case_dir_user, "saveAccountBalanceInfo").write_test_data(case["id"], response.text, "Pass")
+    # @data(*cases02)
+    # def test_case04_saveaccountbalanceinfo(self, case):
+    #     response = self.request.request(case['method'], case['url'], json.loads(case['data']))
+    #     try:
+    #         self.assertIn(case['excepted'], response.json()['message'])
+    #     except AssertionError as e:
+    #         DoExcel(constant.case_dir_user, "saveAccountBalanceInfo").write_test_data(case["id"], response.text, "Failed")
+    #         print(e)
+    #     else:
+    #         DoExcel(constant.case_dir_user, "saveAccountBalanceInfo").write_test_data(case["id"], response.text, "Pass")
 
     @data(*cases03)
     def test_case05_getEnterpriseData(self, case):
@@ -110,16 +110,16 @@ class Testuserport(unittest.TestCase):
         else:
             DoExcel(constant.case_dir_user, "downloadShareCertificate").write_test_data(case["id"], response.text, "Pass")
 
-    @data(*cases07)
-    def test_case09_saveUserTransactionOrder(self, case):
-        response = self.request.request(case['method'], case['url'], json.loads(case['data']))
-        try:
-            self.assertIn(case['excepted'], response.json()['message'])
-        except AssertionError as e:
-            DoExcel(constant.case_dir_user, "saveUserTransactionOrder").write_test_data(case["id"], response.text, "Failed")
-            print(e)
-        else:
-            DoExcel(constant.case_dir_user, "saveUserTransactionOrder").write_test_data(case["id"], response.text, "Pass")
+    # @data(*cases07)
+    # def test_case09_saveUserTransactionOrder(self, case):
+    #     response = self.request.request(case['method'], case['url'], json.loads(case['data']))
+    #     try:
+    #         self.assertIn(case['excepted'], response.json()['message'])
+    #     except AssertionError as e:
+    #         DoExcel(constant.case_dir_user, "saveUserTransactionOrder").write_test_data(case["id"], response.text, "Failed")
+    #         print(e)
+    #     else:
+    #         DoExcel(constant.case_dir_user, "saveUserTransactionOrder").write_test_data(case["id"], response.text, "Pass")
 
     @data(*cases08)
     def test_case10_getUserOrderInfoDTO(self, case):
@@ -132,16 +132,16 @@ class Testuserport(unittest.TestCase):
         else:
             DoExcel(constant.case_dir_user, "getUserOrderInfoDTO").write_test_data(case["id"], response.text, "Pass")
 
-    @data(*cases09)
-    def test_case11_updateUserOrderState(self, case):
-        response = self.request.request(case['method'], case['url'], json.loads(case['data']))
-        try:
-            self.assertIn(case['excepted'], response.json()['message'])
-        except AssertionError as e:
-            DoExcel(constant.case_dir_user, "updateUserOrderState").write_test_data(case["id"], response.text, "Failed")
-            print(e)
-        else:
-            DoExcel(constant.case_dir_user, "updateUserOrderState").write_test_data(case["id"], response.text, "Pass")
+    # @data(*cases09)
+    # def test_case11_updateUserOrderState(self, case):
+    #     response = self.request.request(case['method'], case['url'], json.loads(case['data']))
+    #     try:
+    #         self.assertIn(case['excepted'], response.json()['message'])
+    #     except AssertionError as e:
+    #         DoExcel(constant.case_dir_user, "updateUserOrderState").write_test_data(case["id"], response.text, "Failed")
+    #         print(e)
+    #     else:
+    #         DoExcel(constant.case_dir_user, "updateUserOrderState").write_test_data(case["id"], response.text, "Pass")
 
     @data(*cases10)
     def test_case12_getUserInfo(self, case):
