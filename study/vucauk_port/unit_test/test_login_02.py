@@ -1,7 +1,7 @@
 import unittest
 import json
 from common import constant, request
-from ddt import ddt, data
+from common.new_ddt import ddt, data
 from common.excel_class_02 import DoExcel
 
 cases = DoExcel(constant.case_dir_admin, "login").read_test_data()

@@ -2,7 +2,7 @@ import unittest
 import json
 from common import constant, request,mysql
 from configer import conf_class
-from ddt import ddt, data
+from common.new_ddt import ddt, data
 from common.excel_class_02 import DoExcel
 
 

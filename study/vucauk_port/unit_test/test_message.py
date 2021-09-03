@@ -6,7 +6,7 @@ import common.constant
 from common.login_all import loginaccount
 from configer.conf_class import Conf
 from unit.message import Message
-from ddt import ddt, data
+from common.new_ddt import ddt, data
 from common.excel_class import DoExcel
 
 

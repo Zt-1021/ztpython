@@ -4,7 +4,7 @@ import requests
 import common.constant
 from unit.login import Login
 from configer.conf_class import Conf
-from ddt import ddt, data
+from common.new_ddt import ddt, data
 from common.excel_class import DoExcel
 
 cases = DoExcel(common.constant.case_dir_admin, "login").read_test_data()

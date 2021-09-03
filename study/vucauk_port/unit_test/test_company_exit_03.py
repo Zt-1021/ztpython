@@ -4,7 +4,7 @@ import ast
 from common import mysql
 from common import constant, request
 from configer import conf_class
-from ddt import ddt, data
+from common.new_ddt import ddt, data
 from common.excel_class_02 import DoExcel
 
 
